@@ -4,21 +4,18 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   return (
-    <div>    
+    <div>
       <footer>
-      <nav>
-        <ul>
-          <li onClick={() => navigate('/')}>
-            <p>Explore</p>
-          </li>         
-          <li onClick={() => navigate('/profile')}>
-            <p>Profile</p>
-          </li>
-        </ul>
-      </nav>
-    </footer>
+        <nav>
+          <div>
+            <span onClick={() => navigate('/')}>Explore</span>
+          </div>
+          <div>
+            <span onClick={() => navigate('/profile')}>Profile</span>
+          </div>
+        </nav>
+      </footer>
     </div>
-
   );
 };
 
