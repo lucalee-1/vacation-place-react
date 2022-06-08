@@ -7,21 +7,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.container {
+  margin: 25px; 
+  outline: dashed 1px black; 
+  display: flex;
+  justify-content: center;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-.exploreCategories {
-  display: flex;
-  justify-content: space-between;
-}
-
-.exploreImg {
-  min-height: 115px;
-  height: 15vw;
-  width: 100%;
-  border-radius: 1.5rem;
-  object-fit: cover;
-  margin: 0 auto;
 }

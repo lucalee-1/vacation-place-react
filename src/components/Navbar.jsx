@@ -4,7 +4,8 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   return (
-    <footer>
+    <div>    
+      <footer>
       <nav>
         <ul>
           <li onClick={() => navigate('/')}>
@@ -16,6 +17,8 @@ const Navbar = () => {
         </ul>
       </nav>
     </footer>
+    </div>
+
   );
 };
 

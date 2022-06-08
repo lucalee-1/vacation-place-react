@@ -7,8 +7,9 @@ import SignUp from './views/SignUp';
 
 function App() {
   return (
-    <>
+    <div className='container'>
       <Router>
+      <Navbar />
         <Routes>
           <Route path="/" element={<Explore />} />
           <Route path="/category/:categoryName" element={<Category />} />
@@ -16,10 +17,8 @@ function App() {
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
         </Routes>
-        <Navbar />
       </Router>
-      <h1>App</h1>
-    </>
+    </div>
   );
 }
 
