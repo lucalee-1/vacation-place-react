@@ -13,10 +13,8 @@ const Category = () => {
   useEffect(() => {
     const fetchListings = async () => {
       try {
-        const listingsRef = collection(db, 'listings');
-
         const q = query(
-          listingsRef,
+          collection(db, 'listings'),
           where('category', '==', params.categoryName),
           orderBy('timestamp', 'desc'),
           limit(10)

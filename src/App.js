@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Explore from './views/Explore';
 import Category from './views/Category';
+import ListingDetails from './views/ListingDetails';
 import SignIn from './views/SignIn';
 import SignUp from './views/SignUp';
 import Profile from './views/Profile';
@@ -15,7 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Explore />} />
           <Route path="/category/:categoryName" element={<Category />} />
-          <Route path="/category/:categoryName/:id" element={<ListingDetails />} />
+          <Route path="/category/:categoryName/:listingId" element={<ListingDetails />} />
           <Route
             path="/profile"
             element={
