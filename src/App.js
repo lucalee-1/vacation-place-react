@@ -15,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Explore />} />
           <Route path="/category/:categoryName" element={<Category />} />
+          <Route path="/category/:categoryName/:id" element={<ListingDetails />} />
           <Route
             path="/profile"
             element={
@@ -23,7 +24,6 @@ function App() {
               </PrivateRoute>
             }
           />
-
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
         </Routes>

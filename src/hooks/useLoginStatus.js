@@ -15,6 +15,5 @@ export const useLoginStatus = () => {
     });
     return unsub;
   }, []);
-console.log("from hook", loggedIn, loading)
   return { loggedIn, loading };
 };

@@ -17,7 +17,6 @@ const Profile = () => {
     navigate('/');
   };
  
-console.log(user);
   return (
     <div>
       <h2>{name}</h2>

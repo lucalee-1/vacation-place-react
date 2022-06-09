@@ -4,8 +4,6 @@ import { useLoginStatus } from '../hooks/useLoginStatus';
 const PrivateRoute = ({children}) => {
   const { loggedIn, loading } = useLoginStatus();
 
-  console.log(loggedIn, loading);
-
   if (loading) {
     return <h3>Loading...</h3>;
   }
