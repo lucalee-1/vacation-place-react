@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { collection, getDocs, query, where, orderBy, limit, startAfter } from 'firebase/firestore';
 import { db } from '../firebase.config';
 import { ListingItem } from '../components/ListingItem';
@@ -52,6 +52,9 @@ const Category = () => {
       ) : (
         'No listings yet'
       )}
+      <Link to="/" >         
+          <p>Go Back</p>
+          </Link> 
     </div>
   );
 };

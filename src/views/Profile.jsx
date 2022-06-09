@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { getAuth } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Profile = () => {
   const auth = getAuth();
@@ -23,6 +23,7 @@ const Profile = () => {
       <button type="button" onClick={handleLogout}>
         Log Out
       </button>
+      <Link to='/create-listing'><p>Create a new listing</p></Link>
     </div>
   );
 };

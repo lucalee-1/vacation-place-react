@@ -47,6 +47,9 @@ const ListingDetails = () => {
           <li>Pet-friendly: {listing.petFriendly ? 'Yes' : 'No'}</li>
         </ul>
       </main>
+      <Link to={`/category/${params.categoryName}`} >         
+          <p>Go Back</p>
+          </Link> 
     </div>
   );
 };

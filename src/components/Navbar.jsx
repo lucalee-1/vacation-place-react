@@ -4,7 +4,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   return (
-    <div>
+    <div className='container'>
       <footer>
         <nav>
           <div>

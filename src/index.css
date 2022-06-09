@@ -14,6 +14,18 @@ body {
   justify-content: center;
 }
 
+.numberInput {
+  width:50px;
+}
+
+.booleanSelect {
+  width:80px;
+}
+
+label {
+  padding-left: 10px;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
