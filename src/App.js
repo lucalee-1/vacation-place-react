@@ -5,17 +5,25 @@ import Category from './views/Category';
 import SignIn from './views/SignIn';
 import SignUp from './views/SignUp';
 import Profile from './views/Profile';
-
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   return (
-    <div className='container'>
+    <div className="container">
       <Router>
-      <Navbar />
+        <Navbar />
         <Routes>
           <Route path="/" element={<Explore />} />
           <Route path="/category/:categoryName" element={<Category />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route
+            path="/profile"
+            element={
+              <PrivateRoute>
+                <Profile />
+              </PrivateRoute>
+            }
+          />
+
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
         </Routes>

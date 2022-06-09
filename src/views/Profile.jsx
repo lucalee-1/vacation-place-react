@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { getAuth } from 'firebase/auth';
-import { useNavigate, Link, Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
   const auth = getAuth();
@@ -16,9 +16,7 @@ const Profile = () => {
     auth.signOut();
     navigate('/');
   };
-  // if (!user.name) {
-  //   return 'Not Logged In';
-  // }
+ 
 console.log(user);
   return (
     <div>
