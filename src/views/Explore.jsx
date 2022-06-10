@@ -5,7 +5,7 @@ const Explore = () => {
   return (
     <div>
       <header>
-        <p>Explore</p>
+        <h2>Explore</h2>
       </header>
 
       <main>

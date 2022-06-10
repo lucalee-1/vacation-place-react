@@ -31,12 +31,12 @@ const ListingDetails = () => {
   return (
     <div>
       <header>
-        <h2>{listing.name}</h2>
+        <h2>{listing.title}</h2>
       </header>
       <main>
         {/* image */}
         <div>{listing.location}</div>
-        <div>${listing.regularPrice}.00/night</div>
+        <div>${listing.price}.00/night</div>
         <span>{listing.bedrooms} bedrooms</span>
         <span> & </span>
         <span>{listing.bathrooms} bathrooms</span>
@@ -48,7 +48,7 @@ const ListingDetails = () => {
         </ul>
       </main>
       <Link to={`/category/${params.categoryName}`} >         
-          <p>Go Back</p>
+          <p>Go back</p>
           </Link> 
     </div>
   );

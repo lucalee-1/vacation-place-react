@@ -1,22 +1,23 @@
 import { useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 import { useNavigate } from 'react-router-dom';
+import { db } from '../firebase.config';
 
 const initialFormState = {
-  name: '',
+  title: '',
   category: '',
-  ac: '',
-  parking: '',
-  petFriendly: '',
-  pool: '',
-  kitchen: '',
+  ac: false,
+  parking: false,
+  petFriendly: false,
+  pool: false,
+  kitchen: false,
   bathrooms: 1,
   bedrooms: 1,
-  regularPrice: 0,
-  address: '',
+  price: 0,
+  location: '',
   lat: 0,
-  lng: 0,
-  images: [],
+  lng: 0
 };
 
 const CreateListing = () => {
@@ -33,9 +34,8 @@ const CreateListing = () => {
     bathrooms,
     bedrooms,
     kitchen,
-    regularPrice,
-    address,
-    images,
+    price,
+    location,
   } = formData;
 
   const auth = getAuth();
@@ -52,9 +52,21 @@ const CreateListing = () => {
     return unsub;
   }, [auth, navigate]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    setLoading(true)
+
+    const formDataCopy = {
+      ...formData,      
+      timestamp: serverTimestamp(),
+    }
+
+    const docRef = await addDoc(collection(db, 'listings'), formDataCopy)
+    setLoading(false)
+    navigate(`/category/${formDataCopy.category}/${docRef.id}`)
   };
+
   const onMutate = (e) => {
     if (e.target.files) {
       setFormData((prevState) => ({ ...prevState, images: e.target.files }));
@@ -70,7 +82,7 @@ const CreateListing = () => {
 
   const onChangeBoolean = (e) => {
     let boolean = null;
-    console.log(e.target.value);
+
     if (e.target.value === 'true') {
       boolean = true;
     }
@@ -83,6 +95,9 @@ const CreateListing = () => {
     }));
   };
 
+
+
+  
   if (loading) {
     return <h3>Loading...</h3>;
   }
@@ -113,10 +128,10 @@ const CreateListing = () => {
               required
             >
               <option value="">--Listing category--</option>
-              <option value="Beach">Beach</option>
-              <option value="City">City</option>
-              <option value="Luxury">Luxury</option>
-              <option value="Mountain">Mountain</option>
+              <option value="beach">Beach</option>
+              <option value="city">City</option>
+              <option value="luxury">Luxury</option>
+              <option value="mountain">Mountain</option>
             </select>
           </div>
           <div>
@@ -157,7 +172,6 @@ const CreateListing = () => {
                 onChange={onChangeBoolean}
                 required
               >
-                <option>--Select--</option>
                 <option value="false">No</option>
                 <option value="true">Yes</option>
               </select>
@@ -170,7 +184,6 @@ const CreateListing = () => {
                 onChange={onChangeBoolean}
                 required
               >
-                <option>--Select--</option>
                 <option value="false">No</option>
                 <option value="true">Yes</option>
               </select>
@@ -185,7 +198,6 @@ const CreateListing = () => {
                 onChange={onChangeBoolean}
                 required
               >
-                <option>--Select--</option>
                 <option value="false">No</option>
                 <option value="true">Yes</option>
               </select>
@@ -198,7 +210,6 @@ const CreateListing = () => {
                 onChange={onChangeBoolean}
                 required
               >
-                <option>--Select--</option>
                 <option value="false">No</option>
                 <option value="true">Yes</option>
               </select>
@@ -213,7 +224,6 @@ const CreateListing = () => {
                 onChange={onChangeBoolean}
                 required
               >
-                <option>--Select--</option>
                 <option value="false">No</option>
                 <option value="true">Yes</option>
               </select>
@@ -221,12 +231,12 @@ const CreateListing = () => {
           </div>
 
           <div>
-            <label htmlFor="regularPrice">Price $</label>
+            <label htmlFor="price">Price $</label>
             <input
               className="numberInput"
               type="number"
-              id="regularPrice"
-              value={regularPrice}
+              id="price"
+              value={price}
               onChange={onMutate}
               min={5}
               max={9000}
@@ -235,28 +245,16 @@ const CreateListing = () => {
             <span> /night</span>
           </div>
           <div>
-            <label htmlFor="address">Address</label>
-            <input    
-              type="number"
-              id="address"
-              value={address}
+            <label htmlFor="location">Location</label>
+            <input
+              type="text"
+              id="location"
+              value={location}
               onChange={onMutate}
               minLength={3}
               required
             />
           </div>
-          <div>
-            <label htmlFor="images">Images </label>
-            <input
-              type="file"
-              id="images"
-              max="6"
-              accept=".jpg, .png, .jpeg"
-              multiple
-              value={images}
-              onChange={onMutate}
-            />
-          </div>          
           <button type="submit">Submit</button>
         </form>
       </main>

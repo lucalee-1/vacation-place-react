@@ -5,9 +5,9 @@ export const ListingItem = ({ listing, id }) => {
     <div>
       <div>{listing.location}</div>
       <Link to={`/category/${listing.category}/${id}`}>
-        <div>{listing.name}</div>
+        <div>{listing.title}</div>
       </Link>
-      <div>${listing.regularPrice}.00/night</div>
+      <div>${listing.price}.00/night</div>
     </div>
   );
 };
