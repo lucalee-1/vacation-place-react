@@ -4,15 +4,12 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   return (
-    <div className='container'>
+    <div className="navbar">
       <footer>
         <nav>
-          <div>
-            <span onClick={() => navigate('/')}>Explore</span>
-          </div>
-          <div>
-            <span onClick={() => navigate('/profile')}>Profile</span>
-          </div>
+          <span onClick={() => navigate('/')}>Explore</span>
+          <span onClick={() => navigate('/profile')}>Profile</span>
+          <span onClick={() => navigate('/create-listing')}>New Listing</span>
         </nav>
       </footer>
     </div>

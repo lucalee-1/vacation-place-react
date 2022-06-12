@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export const ListingItem = ({ listing, id }) => {
   return (
-    <div>
+    <div className='listing-item'>
       <div>{listing.location}</div>
       <Link to={`/category/${listing.category}/${id}`}>
         <div>{listing.title}</div>

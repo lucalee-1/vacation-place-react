@@ -10,6 +10,8 @@ const Category = () => {
 
   const params = useParams();
 
+  const {categoryName} = params
+
   useEffect(() => {
     const fetchListings = async () => {
       try {
@@ -37,7 +39,7 @@ const Category = () => {
   return (
     <div>
       <header>
-        <p>{params.categoryName}</p>
+        <h3>{categoryName.replace(categoryName[0], categoryName[0].toUpperCase())}</h3>
       </header>
       {loading ? (
         <h3>Loading...</h3>

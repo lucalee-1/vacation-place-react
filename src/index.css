@@ -5,14 +5,53 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding-top: 70px
 }
 
-.container {
+.main-container {
   margin: 25px; 
   outline: dashed 1px black; 
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
+.container {  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.category-link {
+  flex: 50%;
+}
+
+.listing-item {
+  margin-top: 20px;
+}
+
+
+.navbar {
+  overflow: hidden;
+  background-color: #e3f2fd;
+  position: fixed;
+  top: 0; 
+  width: 100%;
+}
+
+.navbar span {
+  float: left;
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar span:hover {
+  background: #b5daf4;
+  cursor: pointer;
+}
+
 
 .numberInput {
   width:50px;

@@ -106,7 +106,7 @@ const CreateListing = () => {
       <header>
         <h2>Create a Listing</h2>
       </header>
-      <main>
+      <main className='container'>
         <form onSubmit={handleSubmit}>
           <label htmlFor="title">Title </label>
           <input

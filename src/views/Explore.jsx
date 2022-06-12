@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import beachCategoryImage from '../assets/beachCategory.jpg';
 
 const Explore = () => {
   return (
@@ -9,21 +8,21 @@ const Explore = () => {
       </header>
 
       <main>
-        <p>Categories</p>
-        <div>
-          <Link to="/category/beach" >
+        <h4>Categories</h4>
+        <div className='container'>
+          <Link to="/category/beach" className='category-link'>
           <img className="" alt="" />
           <p>Beach</p>
           </Link>
-          <Link to="/category/mountain" >
+          <Link to="/category/mountain" className='category-link'>
           <img className="" alt="" />
           <p>Mountain</p>
           </Link>
-          <Link to="/category/city" >
+          <Link to="/category/city" className='category-link'>
           <img className="" alt="" />
           <p>City</p>
           </Link>
-          <Link to="/category/luxury" >
+          <Link to="/category/luxury" className='category-link'>
           <img className="" alt="" />
           <p>Luxury</p>
           </Link>

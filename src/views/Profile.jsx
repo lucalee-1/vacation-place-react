@@ -19,7 +19,7 @@ const Profile = () => {
  
   return (
     <div>
-      <h2>{name}</h2>
+      <h2>Hi, {name}</h2>
       <button type="button" onClick={handleLogout}>
         Log Out
       </button>
