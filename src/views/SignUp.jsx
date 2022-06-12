@@ -3,12 +3,15 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { setDoc, doc, serverTimestamp } from 'firebase/firestore';
-import {db} from '../firebase.config';
+import { toast } from 'react-toastify';
+import { BallTriangle } from 'react-loader-spinner';
+import { db } from '../firebase.config';
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({ email: '', password: '', name: '' });
   const { name, email, password } = formData;
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -21,6 +24,8 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+
 
     try {
       const auth = getAuth();
@@ -31,18 +36,34 @@ const SignUp = () => {
         displayName: name,
       });
 
-      const formDataNoPw = {...formData}
-      delete formDataNoPw.password
-      formDataNoPw.timestamp = serverTimestamp()
+      const formDataNoPw = { ...formData };
+      delete formDataNoPw.password;
+      formDataNoPw.timestamp = serverTimestamp();
 
-      await setDoc(doc(db, 'users', user.uid), formDataNoPw)
+      await setDoc(doc(db, 'users', user.uid), formDataNoPw);
+
+      setLoading(false);
 
       navigate('/');
+      toast.success(`Welcome to Vacation Place, ${name}!`);
     } catch (error) {
-      console.log(error);
+      setLoading(false);
+      if (error.code === 'auth/email-already-in-use') {
+        toast.error('The email address is already in use');
+      } else if (error.code === 'auth/invalid-email') {
+        toast.error('The email address is not valid.');
+      } else if (error.code === 'auth/operation-not-allowed') {
+        toast.error('Operation not allowed.');
+      } else if (error.code === 'auth/weak-password') {
+        toast.error('The password is too weak.');
+      } else {
+        toast.error('Something went wrong with registration');
+      }
     }
   };
-
+  if (loading) {
+    return <BallTriangle height={70} width={70} color="#8ac8f4" ariaLabel="loading" />;
+  }
   return (
     <>
       <div>
@@ -87,7 +108,7 @@ const SignUp = () => {
             </div>
             <Link to="/forgot-password">Forgot Password</Link>
             <div>
-              <button>Sign Up</button>
+              <button type="submit">Sign Up</button>
             </div>
           </form>
           <Link to="/signin">Sign In Instead</Link>

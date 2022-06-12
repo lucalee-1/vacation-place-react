@@ -42,7 +42,7 @@ const Category = () => {
         <h3>{categoryName.replace(categoryName[0], categoryName[0].toUpperCase())}</h3>
       </header>
       {loading ? (
-        <h3>Loading...</h3>
+        <></>
       ) : listings && listings.length > 0 ? (
         <main>
           <div>

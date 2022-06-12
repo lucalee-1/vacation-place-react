@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { BallTriangle } from 'react-loader-spinner';
 import { db } from '../firebase.config';
 
 const initialFormState = {
@@ -17,7 +19,7 @@ const initialFormState = {
   price: 0,
   location: '',
   lat: 0,
-  lng: 0
+  lng: 0,
 };
 
 const CreateListing = () => {
@@ -55,16 +57,20 @@ const CreateListing = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setLoading(true)
+    setLoading(true);
 
     const formDataCopy = {
-      ...formData,      
+      ...formData,
       timestamp: serverTimestamp(),
+    };
+    try {
+      const docRef = await addDoc(collection(db, 'listings'), formDataCopy);
+      setLoading(false);
+      navigate(`/category/${formDataCopy.category}/${docRef.id}`);
+      toast.success('Successfully created new listing!');
+    } catch (error) {
+      toast.error('Something went wrong.');
     }
-
-    const docRef = await addDoc(collection(db, 'listings'), formDataCopy)
-    setLoading(false)
-    navigate(`/category/${formDataCopy.category}/${docRef.id}`)
   };
 
   const onMutate = (e) => {
@@ -95,18 +101,18 @@ const CreateListing = () => {
     }));
   };
 
-
-
-  
   if (loading) {
-    return <h3>Loading...</h3>;
+    return <BallTriangle height={70}
+    width={70}
+    color='#8ac8f4'
+    ariaLabel='loading'/>;
   }
   return (
     <div>
       <header>
         <h2>Create a Listing</h2>
       </header>
-      <main className='container'>
+      <main className="container">
         <form onSubmit={handleSubmit}>
           <label htmlFor="title">Title </label>
           <input

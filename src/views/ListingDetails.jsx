@@ -17,19 +17,18 @@ const ListingDetails = () => {
         if (docSnap.exists()) {
           setListing(docSnap.data());
           setLoading(false);
-        }else{
-          navigate(-1)
-
+        } else {
+          navigate(-1);
         }
       } catch (error) {
         console.log(error);
       }
     };
     fetchListing();
-  }, [params.listingId]);
+  }, [params.listingId, navigate]);
 
   if (loading) {
-    return <h3>Loading...</h3>
+    return;
   }
   return (
     <div>
@@ -50,9 +49,9 @@ const ListingDetails = () => {
           <li>Pet-friendly: {listing.petFriendly ? 'Yes' : 'No'}</li>
         </ul>
       </main>
-      <Link to={`/category/${params.categoryName}`} >         
-          <p>Go back</p>
-          </Link> 
+      <Link to={`/category/${params.categoryName}`}>
+        <p>Go back</p>
+      </Link>
     </div>
   );
 };
