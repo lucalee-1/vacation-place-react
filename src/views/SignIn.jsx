@@ -51,7 +51,7 @@ const SignIn = () => {
   }
   return (
     <>
-      <div>
+      <div className="mb-div">
         <header>
           <h3>Sign In</h3>
         </header>

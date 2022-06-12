@@ -10,6 +10,7 @@ import ListingDetails from './views/ListingDetails';
 import CreateListing from './views/CreateListing';
 import SignIn from './views/SignIn';
 import SignUp from './views/SignUp';
+import ForgotPassword from './views/ForgotPassword';
 import Profile from './views/Profile';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 
@@ -36,6 +37,7 @@ function App() {
             />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
           </Routes>
         </Router>
       </div>

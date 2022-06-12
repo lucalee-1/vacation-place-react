@@ -66,7 +66,7 @@ const SignUp = () => {
   }
   return (
     <>
-      <div>
+      <div className="mb-div">
         <header>
           <h3>Sign Up</h3>
         </header>
