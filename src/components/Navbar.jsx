@@ -1,8 +1,7 @@
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const location = useLocation();
   return (
     <div className="navbar">
       <footer>

@@ -17,6 +17,9 @@ const ListingDetails = () => {
         if (docSnap.exists()) {
           setListing(docSnap.data());
           setLoading(false);
+        }else{
+          navigate(-1)
+
         }
       } catch (error) {
         console.log(error);
