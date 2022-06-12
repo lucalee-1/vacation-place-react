@@ -78,6 +78,7 @@ const SignUp = () => {
                 id="password"
                 value={password}
                 onChange={onChange}
+                minLength={6}
                 required
               />
               <button type="button" onClick={() => setShowPassword((prevState) => !prevState)}>

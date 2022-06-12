@@ -20,6 +20,7 @@ const Profile = () => {
   return (
     <div>
       <h2>Hi, {name}</h2>
+      <p>{email}</p>
       <button type="button" onClick={handleLogout}>
         Log Out
       </button>
