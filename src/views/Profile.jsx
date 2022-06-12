@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { getAuth } from 'firebase/auth';
 import { Link, useNavigate } from 'react-router-dom';
+import{toast} from 'react-toastify'
 
 const Profile = () => {
   const auth = getAuth();
@@ -15,6 +16,7 @@ const Profile = () => {
   const handleLogout = () => {
     auth.signOut();
     navigate('/');
+    toast.success("Successfully logged out.")
   };
  
   return (

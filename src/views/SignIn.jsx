@@ -20,6 +20,32 @@ const SignIn = () => {
     }));
   };
 
+  const handleGuestAcc = async (e) => {
+    setFormData({email: 'guest@vacationplace.com', password: 'guestpassword1'})
+    setLoading(true);
+
+    try {
+      const auth = getAuth();
+
+      const userCredential = await signInWithEmailAndPassword(auth, 'guest@vacationplace.com', 'guestpassword1');
+
+      if (userCredential.user) {
+        setLoading(false);
+        navigate('/');
+        toast.success(`Welcome back, ${auth.currentUser.displayName}!`);
+      }
+    } catch (error) {
+      setLoading(false);
+      if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+        toast.error('Wrong user credentials');
+      } else if (error.code === 'auth/too-many-requests') {
+        toast.error('Too many failed login attemps. Please wait and try again later.');
+      } else {
+        toast.error('Something went wrong ');
+      }
+    }
+  }
+
   const onSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -56,6 +82,10 @@ const SignIn = () => {
           <h3>Sign In</h3>
         </header>
         <main>
+          <div className='mb-div'>
+          <p>You may use a guest account instead: </p>
+          <button type='button' onClick={handleGuestAcc}>Use Guest Account</button>
+          </div>
           <form onSubmit={onSubmit}>
             <input
               type="email"
