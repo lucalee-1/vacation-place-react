@@ -54,7 +54,7 @@ const CreateListing = () => {
     return unsub;
   }, [auth, navigate]);
 
-  const handleSubmit = async (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
     setLoading(true);
@@ -113,7 +113,7 @@ const CreateListing = () => {
         <h2>Create a Listing</h2>
       </header>
       <main className="container">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={onSubmit}>
           <label htmlFor="title">Title </label>
           <input
             type="text"

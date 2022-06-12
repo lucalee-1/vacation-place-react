@@ -22,7 +22,7 @@ const SignUp = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
@@ -71,7 +71,7 @@ const SignUp = () => {
           <h3>Sign Up</h3>
         </header>
         <main>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={onSubmit}>
             <div>
               <input
                 type="text"

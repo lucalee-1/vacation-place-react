@@ -20,7 +20,7 @@ const SignIn = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
@@ -56,7 +56,7 @@ const SignIn = () => {
           <h3>Sign In</h3>
         </header>
         <main>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={onSubmit}>
             <input
               type="email"
               placeholder="Email"
