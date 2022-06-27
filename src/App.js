@@ -12,14 +12,14 @@ import SignIn from './views/SignIn';
 import SignUp from './views/SignUp';
 import ForgotPassword from './views/ForgotPassword';
 import Profile from './views/Profile';
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 function App() {
   return (
-    <>      
-      <div className="main-container">
-        <Router>
-          <Navbar />
+    <>
+      <Router>
+        <Navbar />
+        <div className="content">
           <Routes>
             <Route path="/" element={<Explore />} />
             <Route path="/category/:categoryName" element={<Category />} />
@@ -39,9 +39,9 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
           </Routes>
-        </Router>
-      </div>
-      <ToastContainer limit={3} transition={Slide} hideProgressBar={true}/>
+        </div>
+      </Router>
+      <ToastContainer limit={3} transition={Slide} hideProgressBar={true} />
     </>
   );
 }

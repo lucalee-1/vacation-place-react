@@ -4,13 +4,13 @@ const Navbar = () => {
   const navigate = useNavigate();
   return (
     <div className="navbar">
-      <footer>
+      <header className='nav-container'>
         <nav>
           <span onClick={() => navigate('/')}>Explore</span>
           <span onClick={() => navigate('/profile')}>Profile</span>
           <span onClick={() => navigate('/create-listing')}>New Listing</span>
         </nav>
-      </footer>
+      </header>
     </div>
   );
 };

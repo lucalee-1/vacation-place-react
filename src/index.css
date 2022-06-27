@@ -1,28 +1,44 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  min-height: calc(100vh - 8em);
+  display: flex;
+  flex-direction: column;
+  font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding-top: 70px
+  padding-top: 8em;
 }
 
-.main-container {
-  margin: 25px; 
-  outline: dashed 1px black; 
+.content {
+  margin: auto;
+  outline: dashed 1px black;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  max-width: 40%;
+  min-height: 100px;
 }
-.container {  
+
+@media screen and (max-width: 820px) {
+  .content {
+    max-width: 70%;
+  }
+}
+
+@media screen and (max-width: 600px ) {
+  .content {
+    max-width: 80%;
+  }
+}
+
+.container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   margin-bottom: 25px;
 }
 
-.mb-div{
+.mb-div {
   margin-bottom: 20px;
 }
 
@@ -34,18 +50,23 @@ body {
   margin-top: 20px;
 }
 
-
 .navbar {
   overflow: hidden;
   background-color: #e3f2fd;
   position: fixed;
-  top: 0; 
+  top: 0;
   width: 100%;
 }
 
+.nav-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 .navbar span {
   float: left;
   display: block;
+  font-size: 1.15em;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -56,13 +77,12 @@ body {
   cursor: pointer;
 }
 
-
 .numberInput {
-  width:50px;
+  width: 50px;
 }
 
 .booleanSelect {
-  width:80px;
+  width: 80px;
 }
 
 label {
@@ -70,6 +90,5 @@ label {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
